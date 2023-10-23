@@ -50,7 +50,7 @@ STOP_VM_SCHEMA = vol.Schema({
     vol.Required('node_name'): str,
 })
 
-RESTART_VM_SCHEMA = vol.Schema({
+REBOOT_VM_SCHEMA = vol.Schema({
     vol.Required('vm_id'): vol.Coerce(int),
     vol.Required('node_name'): str,
 })
@@ -104,16 +104,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         node_name = call.data.get('node_name')
         await hass.async_add_executor_job(coordinator.proxmox_client.stop_vm, node_name, vm_id)
 
-    async def handle_restart(call):
+    async def handle_reboot(call):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
-        await hass.async_add_executor_job(coordinator.proxmox_client.restart_vm, node_name, vm_id)
+        await hass.async_add_executor_job(coordinator.proxmox_client.reboot_vm, node_name, vm_id)
 
 
     # Register services
     hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=START_VM_SCHEMA)
     hass.services.async_register(DOMAIN, 'stop_vm', handle_stop, schema=STOP_VM_SCHEMA)
-    hass.services.async_register(DOMAIN, 'restart_vm', handle_restart, schema=RESTART_VM_SCHEMA)
+    hass.services.async_register(DOMAIN, 'reboot_vm', handle_restart, schema=REBOOT_VM_SCHEMA)
 
     return True
 
