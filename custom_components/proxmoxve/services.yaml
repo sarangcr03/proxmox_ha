@@ -1,5 +1,5 @@
 start_vm:
-  description: Start a virtual machine in Proxmox.
+  description: Start a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
@@ -8,7 +8,7 @@ start_vm:
       description: The name of the node.
       example: "proxmox_node"
 stop_vm:
-  description: Stop a virtual machine in Proxmox.
+  description: Stop a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
@@ -17,7 +17,7 @@ stop_vm:
       description: The name of the node.
       example: "proxmox_node"
 reboot_vm:
-  description: Reboot a virtual machine in Proxmox.
+  description: Reboot a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
@@ -26,7 +26,7 @@ reboot_vm:
       description: The name of the node.
       example: "proxmox_node"
 shutdown_vm:
-  description: Shutdown a virtual machine in Proxmox.
+  description: Shutdown a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
@@ -35,7 +35,7 @@ shutdown_vm:
       description: The name of the node.
       example: "proxmox_node"
 reset_vm:
-  description: Reset a virtual machine in Proxmox.
+  description: Reset a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
@@ -44,7 +44,7 @@ reset_vm:
       description: The name of the node.
       example: "proxmox_node"
 pause_vm:
-  description: Pause a virtual machine in Proxmox.
+  description: Pause a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
@@ -53,7 +53,7 @@ pause_vm:
       description: The name of the node.
       example: "proxmox_node"
 hibernate_vm:
-  description: Hibernate a virtual machine in Proxmox.
+  description: Hibernate a virtual machine in Proxmox. (vm_id and node_name are required)
   fields:
     vm_id:
       description: The ID of the virtual machine.
