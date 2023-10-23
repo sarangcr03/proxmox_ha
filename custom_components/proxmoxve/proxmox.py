@@ -39,3 +39,11 @@ class ProxmoxClient:
     def get_api_client(self):
         """Return the ProxmoxAPI client."""
         return self._proxmox
+    def start_vm(self, node_name, vm_id):
+        return self._proxmox.nodes(node_name).qemu(vm_id).status.start.post()
+
+    def stop_vm(self, node_name, vm_id):
+        return self._proxmox.nodes(node_name).qemu(vm_id).status.stop.post()
+
+    def restart_vm(self, node_name, vm_id):
+        return self._proxmox.nodes(node_name).qemu(vm_id).status.reset.post()
