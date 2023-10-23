@@ -110,9 +110,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         coordinator.proxmox_client.restart_vm(node_name, vm_id)
 
     # Register services
-    hass.services.async_register(DOMAIN, 'start_vm', handle_start)
-    hass.services.async_register(DOMAIN, 'stop_vm', handle_stop)
-    hass.services.async_register(DOMAIN, 'restart_vm', handle_restart)
+    hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=START_VM_SCHEMA)
+    hass.services.async_register(DOMAIN, 'stop_vm', handle_stop, schema=STOP_VM_SCHEMA)
+    hass.services.async_register(DOMAIN, 'restart_vm', handle_restart, schema=RESTART_VM_SCHEMA)
 
     return True
 
