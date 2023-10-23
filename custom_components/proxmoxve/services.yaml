@@ -4,60 +4,74 @@ start_vm:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
 stop_vm:
   description: Stop a virtual machine in Proxmox.
   fields:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
 reboot_vm:
   description: Reboot a virtual machine in Proxmox.
   fields:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
 shutdown_vm:
   description: Shutdown a virtual machine in Proxmox.
   fields:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
 reset_vm:
   description: Reset a virtual machine in Proxmox.
   fields:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
 pause_vm:
   description: Pause a virtual machine in Proxmox.
   fields:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
 hibernate_vm:
   description: Hibernate a virtual machine in Proxmox.
   fields:
     vm_id:
       description: The ID of the virtual machine.
       example: "101"
+      text:
     node_name:
       description: The name of the node.
       example: "proxmox_node"
+      text:
