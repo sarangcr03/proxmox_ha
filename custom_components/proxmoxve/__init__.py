@@ -40,6 +40,21 @@ _LOGGER = logging.getLogger(__name__)
 
 CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
 
+START_VM_SCHEMA = vol.Schema({
+    vol.Required('vm_id'): vol.Coerce(int),
+    vol.Required('node_name'): str,
+})
+
+STOP_VM_SCHEMA = vol.Schema({
+    vol.Required('vm_id'): vol.Coerce(int),
+    vol.Required('node_name'): str,
+})
+
+RESTART_VM_SCHEMA = vol.Schema({
+    vol.Required('vm_id'): vol.Coerce(int),
+    vol.Required('node_name'): str,
+})
+
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the platform."""
