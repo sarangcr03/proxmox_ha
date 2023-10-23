@@ -77,6 +77,27 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         hass.async_create_task(
             hass.config_entries.async_forward_entry_setup(entry, component)
         )
+    
+    # Add service handlers
+    async def handle_start(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        coordinator.proxmox_client.start_vm(node_name, vm_id)
+
+    async def handle_stop(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        coordinator.proxmox_client.stop_vm(node_name, vm_id)
+
+    async def handle_restart(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        coordinator.proxmox_client.restart_vm(node_name, vm_id)
+
+    # Register services
+    hass.services.async_register(DOMAIN, 'start_vm', handle_start)
+    hass.services.async_register(DOMAIN, 'stop_vm', handle_stop)
+    hass.services.async_register(DOMAIN, 'restart_vm', handle_restart)
 
     return True
 
