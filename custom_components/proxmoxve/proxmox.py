@@ -45,5 +45,5 @@ class ProxmoxClient:
     def stop_vm(self, node_name, vm_id):
         return self._proxmox.nodes(node_name).qemu(vm_id).status.stop.post()
 
-    def restart_vm(self, node_name, vm_id):
-        return self._proxmox.nodes(node_name).qemu(vm_id).status.reset.post()
+    def reboot_vm(self, node_name, vm_id):
+        return self._proxmox.nodes(node_name).qemu(vm_id).status.reboot.post()
