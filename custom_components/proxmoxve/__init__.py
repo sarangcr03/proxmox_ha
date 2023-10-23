@@ -40,17 +40,7 @@ _LOGGER = logging.getLogger(__name__)
 
 CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
 
-START_VM_SCHEMA = vol.Schema({
-    vol.Required('vm_id'): vol.Coerce(int),
-    vol.Required('node_name'): str,
-})
-
-STOP_VM_SCHEMA = vol.Schema({
-    vol.Required('vm_id'): vol.Coerce(int),
-    vol.Required('node_name'): str,
-})
-
-REBOOT_VM_SCHEMA = vol.Schema({
+VM_ACTION_SCHEMA = vol.Schema({
     vol.Required('vm_id'): vol.Coerce(int),
     vol.Required('node_name'): str,
 })
@@ -98,22 +88,42 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
         await hass.async_add_executor_job(coordinator.proxmox_client.start_vm, node_name, vm_id)
-
     async def handle_stop(call):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
         await hass.async_add_executor_job(coordinator.proxmox_client.stop_vm, node_name, vm_id)
-
     async def handle_reboot(call):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
         await hass.async_add_executor_job(coordinator.proxmox_client.reboot_vm, node_name, vm_id)
+    async def handle_shutdown(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        await hass.async_add_executor_job(coordinator.proxmox_client.shutdown_vm, node_name, vm_id)   
+    async def handle_hibernate(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        await hass.async_add_executor_job(coordinator.proxmox_client.hibernate_vm, node_name, vm_id)
+    async def handle_pause(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        await hass.async_add_executor_job(coordinator.proxmox_client.pause_vm, node_name, vm_id) 
+    async def handle_reset(call):
+        vm_id = call.data.get('vm_id')
+        node_name = call.data.get('node_name')
+        await hass.async_add_executor_job(coordinator.proxmox_client.reset_vm, node_name, vm_id)
+
+
 
 
     # Register services
-    hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=START_VM_SCHEMA)
-    hass.services.async_register(DOMAIN, 'stop_vm', handle_stop, schema=STOP_VM_SCHEMA)
-    hass.services.async_register(DOMAIN, 'reboot_vm', handle_restart, schema=REBOOT_VM_SCHEMA)
+    hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'stop_vm', handle_stop, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'restart_vm', handle_restart, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'shutdown_vm', handle_shutdown, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'hibernate_vm', handle_hibernate, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'pause_vm', handle_pause, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'reset_vm', handle_reset, schema=VM_ACTION_SCHEMA)
 
     return True
 
