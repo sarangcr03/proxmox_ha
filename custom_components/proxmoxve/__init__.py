@@ -97,17 +97,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     async def handle_start(call):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
-        coordinator.proxmox_client.start_vm(node_name, vm_id)
+        await hass.async_add_executor_job(coordinator.proxmox_client.start_vm, node_name, vm_id)
 
     async def handle_stop(call):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
-        coordinator.proxmox_client.stop_vm(node_name, vm_id)
+        await hass.async_add_executor_job(coordinator.proxmox_client.stop_vm, node_name, vm_id)
 
     async def handle_restart(call):
         vm_id = call.data.get('vm_id')
         node_name = call.data.get('node_name')
-        coordinator.proxmox_client.restart_vm(node_name, vm_id)
+        await hass.async_add_executor_job(coordinator.proxmox_client.restart_vm, node_name, vm_id)
+
 
     # Register services
     hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=START_VM_SCHEMA)
