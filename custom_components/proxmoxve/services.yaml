@@ -5,12 +5,14 @@ start_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+      selector:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+      selector:
+        text:
 stop_vm:
   description: Stop a virtual machine in Proxmox.
   fields:
@@ -18,12 +20,14 @@ stop_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+      selector:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+      selector:
+        text:
 reboot_vm:
   description: Reboot a virtual machine in Proxmox.
   fields:
@@ -31,12 +35,14 @@ reboot_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+      selector:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+      selector:
+        text:
 shutdown_vm:
   description: Shutdown a virtual machine in Proxmox.
   fields:
@@ -44,12 +50,12 @@ shutdown_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+        text:
 reset_vm:
   description: Reset a virtual machine in Proxmox.
   fields:
@@ -57,12 +63,14 @@ reset_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+      selector:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+      selector:
+        text:
 pause_vm:
   description: Pause a virtual machine in Proxmox.
   fields:
@@ -70,12 +78,14 @@ pause_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+      selector:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+      selector:
+        text:
 hibernate_vm:
   description: Hibernate a virtual machine in Proxmox.
   fields:
@@ -83,9 +93,11 @@ hibernate_vm:
       name: VM ID
       description: The ID of the virtual machine.
       example: "101"
-      text:
+      selector:
+        text:
     node_name:
       name: Node Name
       description: The name of the node.
       example: "proxmox_node"
-      text:
+      selector:
+        text:
