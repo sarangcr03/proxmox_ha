@@ -116,7 +116,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     # Register services
     hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=VM_ACTION_SCHEMA)
     hass.services.async_register(DOMAIN, 'stop_vm', handle_stop, schema=VM_ACTION_SCHEMA)
-    hass.services.async_register(DOMAIN, 'restart_vm', handle_reboot, schema=VM_ACTION_SCHEMA)
+    hass.services.async_register(DOMAIN, 'reboot_vm', handle_reboot, schema=VM_ACTION_SCHEMA)
     hass.services.async_register(DOMAIN, 'shutdown_vm', handle_shutdown, schema=VM_ACTION_SCHEMA)
     hass.services.async_register(DOMAIN, 'hibernate_vm', handle_hibernate, schema=VM_ACTION_SCHEMA)
     hass.services.async_register(DOMAIN, 'pause_vm', handle_pause, schema=VM_ACTION_SCHEMA)
