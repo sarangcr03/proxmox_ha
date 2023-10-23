@@ -113,9 +113,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         node_name = call.data.get('node_name')
         await hass.async_add_executor_job(coordinator.proxmox_client.reset_vm, node_name, vm_id)
 
-
-
-
     # Register services
     hass.services.async_register(DOMAIN, 'start_vm', handle_start, schema=VM_ACTION_SCHEMA)
     hass.services.async_register(DOMAIN, 'stop_vm', handle_stop, schema=VM_ACTION_SCHEMA)
